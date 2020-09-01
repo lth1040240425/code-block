@@ -3,7 +3,6 @@ package com.doudanhua.basecode.sl4jDemo;
 import ch.qos.logback.classic.pattern.MessageConverter;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import com.alibaba.fastjson.JSONObject;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.slf4j.helpers.MessageFormatter;
 
 import java.util.stream.Stream;
