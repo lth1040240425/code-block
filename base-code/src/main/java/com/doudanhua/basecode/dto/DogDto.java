@@ -1,5 +1,6 @@
 package com.doudanhua.basecode.dto;
 
+import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 
 /**
@@ -11,4 +12,9 @@ import lombok.Data;
 public class DogDto {
     private int age;
     private String name;
+
+//    @Override
+//    public String toString() {
+//        return JSONObject.toJSONString(this);
+//    }
 }
