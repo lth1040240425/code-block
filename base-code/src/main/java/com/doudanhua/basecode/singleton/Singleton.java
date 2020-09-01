@@ -1,4 +1,4 @@
-package com.doudanhua.basecode;
+package com.doudanhua.basecode.singleton;
 
 /**
  * @Author zhangqian

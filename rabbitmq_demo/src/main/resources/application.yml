@@ -1,0 +1,18 @@
+server:
+  port: 8060
+spring:
+  rabbitmq:
+    host: 10.2.0.47
+    port: 5672
+    username: user
+    password: user
+#    listener:
+#      type: simple
+#      simple:
+#        acknowledge-mode: auto
+#        concurrency: 5 # Minimum number of listener invoker threads.
+#        max-concurrency: 10
+#        retry:
+#          enabled: true
+#          max-attempts: 3
+#        default-requeue-rejected: true

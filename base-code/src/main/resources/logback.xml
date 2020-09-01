@@ -1,0 +1,104 @@
+<configuration>
+    <conversionRule conversionWord="msg"  converterClass="com.doudanhua.basecode.sl4jDemo.LogMessageConverter" />
+    <appender name="STDOUT"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%-4relative [%thread]  - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<configuration scan="true" scanPeriod="60 seconds" debug="false">-->
+<!--    &lt;!&ndash;定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径&ndash;&gt;-->
+<!--    <property name="LOG_HOME" value="E://logs"/>-->
+<!--    &lt;!&ndash; <springProperty scope="context" name="LOG_HOME" source="logback.path"/>&ndash;&gt;-->
+
+<!--    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">-->
+<!--        &lt;!&ndash;<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">&ndash;&gt;-->
+<!--        &lt;!&ndash;        <encoder&ndash;&gt;-->
+<!--        &lt;!&ndash;                class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <providers class="net.logstash.logback.composite.loggingevent.LoggingEventJsonProviders">&ndash;&gt;-->
+<!--        &lt;!&ndash;                <pattern>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <pattern>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        {&ndash;&gt;-->
+<!--        &lt;!&ndash;                        "level": "%level",&ndash;&gt;-->
+<!--        &lt;!&ndash;                        "trace": "%X{X-B3-TraceId:-}",&ndash;&gt;-->
+<!--        &lt;!&ndash;                        "requestId": "%X{requestId}",&ndash;&gt;-->
+<!--        &lt;!&ndash;                        "remoteIp": "%X{remoteIp}",&ndash;&gt;-->
+<!--        &lt;!&ndash;                        "span": "%X{X-B3-SpanId:-}",&ndash;&gt;-->
+<!--        &lt;!&ndash;                        "parent":&ndash;&gt;-->
+<!--        &lt;!&ndash;                        "%X{X-B3-ParentSpanId:-}",&ndash;&gt;-->
+<!--        &lt;!&ndash;                        "thread": "%thread",&ndash;&gt;-->
+<!--        &lt;!&ndash;                        "class":&ndash;&gt;-->
+<!--        &lt;!&ndash;                        "%logger{40}",&ndash;&gt;-->
+<!--        &lt;!&ndash;                        "message": "%message",&ndash;&gt;-->
+<!--        &lt;!&ndash;                        "stack_trace":&ndash;&gt;-->
+<!--        &lt;!&ndash;                        "%exception{10}"&ndash;&gt;-->
+<!--        &lt;!&ndash;                        }&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </pattern>&ndash;&gt;-->
+<!--        &lt;!&ndash;                </pattern>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </providers>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </encoder>&ndash;&gt;-->
+<!--        <encoder class="net.logstash.logback.encoder.LogstashEncoder">-->
+<!--            <jsonFactoryDecorator class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">-->
+<!--                <escape>-->
+<!--                    <targetCharacterCode>10</targetCharacterCode>-->
+<!--                    <escapeSequence>\u2028</escapeSequence>-->
+<!--                </escape>-->
+<!--            </jsonFactoryDecorator>-->
+<!--            <providers>-->
+<!--                <pattern>-->
+<!--                    <pattern>-->
+<!--                        {-->
+<!--                        "timestamp":"%date{ISO8601}",-->
+<!--                        "userId":"%mdc{userId}",-->
+<!--                        "requestIp":"%mdc{requestIp}",-->
+<!--                        "event":"%mdc{event}"-->
+<!--                        }-->
+<!--                    </pattern>-->
+<!--                </pattern>-->
+<!--            </providers>-->
+<!--            <charset>UTF-8</charset>-->
+<!--        </encoder>-->
+
+<!--    </appender>-->
+<!--    &lt;!&ndash; 按照每天生成日志文件 &ndash;&gt;-->
+<!--    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <file>${LOG_HOME}/project.log</file>-->
+
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">-->
+<!--            &lt;!&ndash;日志文件输出的文件名&ndash;&gt;-->
+<!--            <fileNamePattern>${LOG_HOME}/%d{yyyyMM,aux}/jtnsh-bank-front-system-%d{yyyy-MM-dd}.%i.log</fileNamePattern>-->
+<!--            <maxFileSize>10MB</maxFileSize>-->
+<!--        </rollingPolicy>-->
+<!--        <encoder>-->
+<!--            &lt;!&ndash;格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符&ndash;&gt;-->
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+
+<!--    &lt;!&ndash; 日志输出级别 &ndash;&gt;-->
+<!--    <root level="INFO">-->
+<!--        <appender-ref ref="STDOUT"/>-->
+<!--        <appender-ref ref="FILE"/>-->
+<!--    </root>-->
+<!--    &lt;!&ndash;日志异步到数据库 &ndash;&gt;-->
+<!--    &lt;!&ndash; <appender name="DB" class="ch.qos.logback.classic.db.DBAppender">-->
+<!--        日志异步到数据库-->
+<!--        <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">-->
+<!--           连接池-->
+<!--           <dataSource class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+<!--              <driverClass>com.mysql.jdbc.Driver</driverClass>-->
+<!--              <url>jdbc:mysql://127.0.0.1:3306/databaseName</url>-->
+<!--              <user>root</user>-->
+<!--              <password>root</password>-->
+<!--            </dataSource>-->
+<!--        </connectionSource>-->
+<!--  </appender> &ndash;&gt;-->
+<!--</configuration>-->
