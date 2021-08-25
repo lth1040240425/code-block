@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@SpringBootTest(classes = {BaseCodeApplication.class})
 @Slf4j
-class BaseCodeApplicationTests {
+public class BaseCodeApplicationTests {
 
     @Test
     void contextLoads() {
