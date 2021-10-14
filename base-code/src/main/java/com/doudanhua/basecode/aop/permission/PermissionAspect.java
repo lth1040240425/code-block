@@ -46,7 +46,7 @@ public class PermissionAspect {
      * @param permission
      */
     @Before("poinCut() && (@annotation(permission) ||@within(permission))")
-    public void before(ProceedingJoinPoint pjp, Permission permission) {
+    public void before(JoinPoint pjp, Permission permission) {
         MethodSignature methodSignature = (MethodSignature) pjp.getSignature();
         Method method = methodSignature.getMethod();
         PermissionNotCheck permissionNotCheck = method.getAnnotation(PermissionNotCheck.class);
